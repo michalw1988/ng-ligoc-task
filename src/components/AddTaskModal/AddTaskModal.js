@@ -3,13 +3,19 @@ import './AddTaskModal.scss';
 import { useStateValue } from '../../state/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { CompactPicker } from 'react-color'
 
 
 function AddTaskModal({ closeModalHandler }) {
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState(false)
   const [description, setDescription] = useState('')
-  const [, dispatch] = useStateValue();
+  const [backgroundColor, setBackgroundColor] = useState('#ccc')
+  const [textColor, setTextColor] = useState('#000')
+  const [displayBackgroundColorPicker, setDisplayBackgroundColorPicker] = useState(false)
+  const [displayTextColorPicker, setDisplayTextColorPicker] = useState(false)
+  const [, dispatch] = useStateValue()
+
 
   const handleAddTask = () => {
     const newTitleError = !title.length
@@ -21,6 +27,8 @@ function AddTaskModal({ closeModalHandler }) {
         newTask: {
           title,
           description,
+          backgroundColor,
+          textColor
         }
       });
       closeModalHandler()
@@ -46,6 +54,34 @@ function AddTaskModal({ closeModalHandler }) {
           <label>Description</label>
           <textarea value={description} onChange={e => setDescription(e.target.value)} />
         </div>
+
+        <div className="color-input-line">
+          <span>Background color</span>
+          <span className="picker-button" onClick={ () => setDisplayBackgroundColorPicker(!displayBackgroundColorPicker) } style={{ background: backgroundColor }}></span>
+        </div>
+        { 
+          displayBackgroundColorPicker && <div className="color-picker-popover">
+            <div onClick={ () => setDisplayBackgroundColorPicker(false) }/>
+            <CompactPicker 
+              color={backgroundColor}
+              onChangeComplete={ color => setBackgroundColor(color.hex) }
+            />
+          </div>
+        }
+
+        <div className="color-input-line">
+          <span>Text color</span>
+          <span className="picker-button" onClick={ () => setDisplayTextColorPicker(!displayTextColorPicker) } style={{ background: textColor }}></span>
+        </div>
+        { 
+          displayTextColorPicker && <div className="color-picker-popover">
+            <div onClick={ () => setDisplayTextColorPicker(false) }/>
+            <CompactPicker 
+              color={backgroundColor}
+              onChangeComplete={ color => setTextColor(color.hex) }
+            />
+          </div>
+        }
 
         <div className="button-wrapper">
           <button onClick={handleAddTask}>Add task</button>

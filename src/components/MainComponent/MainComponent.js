@@ -26,15 +26,14 @@ function MainComponent() {
       </header>
       <section className="tasks-list">
         <div className="containter">
-
           { !tasks.length && <div className="info-message">No tasks on the list. Use the buttom below to add some.</div> }
-          { tasks.length >= 1 && <div className="info-message">You can reorder your task just by draggineg them up or down.</div> }
+          { tasks.length >= 1 && <div className="info-message">You can reorder your tasks by draggineg them up or down.</div> }
 
           <RLDD
             items={tasks}
             itemRenderer={task => {
               return (
-                <div className="task">
+                <div className="task" style={{background: task.backgroundColor, color: task.textColor}}>
                   <div className="title-line">
                     <h3>{task.title}</h3>
                     <div>
