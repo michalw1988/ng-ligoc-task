@@ -1,0 +1,66 @@
+.main-component {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+
+
+  header {
+    background: #2A5F5D;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2F4EF;
+  }
+
+  .tasks-list {
+    flex: 1;
+
+    .containter {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px;
+
+      .task {
+        background: red;
+        margin: 16px 0;
+        padding: 16px;
+      }
+    }
+  }
+
+  .add-task-button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 32px;
+
+    button {
+      border: 0;
+      background: #2A5F5D;
+      color: #F2F4EF;
+      font-size: 16px;
+      padding: 12px 48px;
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  footer {
+    background: #2A5F5D;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #F2F4EF;
+
+    p {
+      font-size: 0.9em;
+      opacity: 0.3;
+    }
+  }
+}
