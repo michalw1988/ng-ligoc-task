@@ -19,17 +19,17 @@ function AddTaskModal({ closeModalHandler }) {
 
   const handleAddTask = () => {
     const newTitleError = !title.length
-
     if (!newTitleError) {
-      console.log('add !', title, description)
+      const newTask = {
+        title,
+        description,
+        backgroundColor,
+        textColor
+      }
+      console.log('Adding new task', newTask)
       dispatch({
         type: 'addTask',
-        newTask: {
-          title,
-          description,
-          backgroundColor,
-          textColor
-        }
+        newTask,
       });
       closeModalHandler()
     }

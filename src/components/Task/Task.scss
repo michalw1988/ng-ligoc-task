@@ -1,0 +1,29 @@
+.task {
+  margin: 16px 0;
+  padding: 16px;
+  cursor: pointer;
+
+  .title-line {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      margin: 0 0 8px;
+      padding: 0;
+
+      .chevron {
+        margin-left: 16px;
+      }
+    }
+
+    span {
+      margin-left: 16px;
+      color: #222;
+
+      &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+      }
+    }
+  }
+}
