@@ -4,8 +4,7 @@ import { useStateValue } from '../../state/state';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
-
-function Task({ task }) {
+function Task({ task, editHandler }) {
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false)
   const [, dispatch] = useStateValue()
 
@@ -18,7 +17,7 @@ function Task({ task }) {
           {task.description && isDescriptionOpen && <FontAwesomeIcon className="chevron" icon={faChevronUp} onClick={() => setIsDescriptionOpen(false)} />}
         </h3>
         <div>
-          <span><FontAwesomeIcon icon={faEdit} /></span>
+          <span><FontAwesomeIcon icon={faEdit} onClick={editHandler} /></span>
           <span><FontAwesomeIcon icon={faTrash} onClick={() => dispatch({type: 'removeTask', idToRemove: task.id})} /></span>
         </div>
       </div>
