@@ -10,9 +10,11 @@
     h3 {
       margin: 0 0 8px;
       padding: 0;
+      display: flex;
+      align-items: center;
 
       .chevron {
-        margin-left: 16px;
+        margin-right: 16px;
       }
     }
 

@@ -5,11 +5,20 @@
 
   header {
     background: #2A5F5D;
-    height: 64px;
+    min-height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: #F2F4EF;
+    padding: 8px 16px;
+    box-sizing: border-box;
+
+    h1 {
+      @media (max-width: 480px) {
+        font-size: 20px;
+      }
+    }
   }
 
   .tasks-list {
@@ -33,18 +42,26 @@
     justify-content: center;
     padding-bottom: 32px;
 
+    @media (max-width: 480px) {
+      display: block;
+      text-align: center;
+    }
+
     button {
-      margin: 0 8px;
+      margin: 8px;
     }
   }
 
   footer {
     background: #2A5F5D;
-    height: 48px;
+    min-height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: #F2F4EF;
+    padding: 8px 16px;
+    box-sizing: border-box;
 
     p {
       font-size: 0.9em;
@@ -60,6 +77,10 @@
     padding: 12px 48px;
     outline: none;
     cursor: pointer;
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
 
     &:hover {
       opacity: 0.9;

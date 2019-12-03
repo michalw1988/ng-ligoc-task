@@ -12,9 +12,9 @@ function Task({ task, editHandler }) {
     <div className="task" style={{background: task.backgroundColor, color: task.textColor}}>
       <div className="title-line">
         <h3> 
-          {task.title}
           {task.description && !isDescriptionOpen && <FontAwesomeIcon className="chevron" icon={faChevronDown} onClick={() => setIsDescriptionOpen(true)} />}
           {task.description && isDescriptionOpen && <FontAwesomeIcon className="chevron" icon={faChevronUp} onClick={() => setIsDescriptionOpen(false)} />}
+          {task.title}
         </h3>
         <div>
           <span><FontAwesomeIcon icon={faEdit} onClick={editHandler} /></span>
