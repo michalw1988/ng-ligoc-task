@@ -1,28 +1,11 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { mount } from "enzyme";
 import MainComponent from "./MainComponent";
 import { StateProvider } from '../../state/state'
 import { reducer } from '../../state/reducer'
 import { initialState } from '../../state/initialState'
 
 describe('MainComponent', () => {
-  it('renders correctly', () => {
-    shallow(
-      <StateProvider>
-        <MainComponent />
-      </StateProvider>
-    )
-  });
-
-  it("initialy don't show any modal", () => {
-    const wrapper = mount(
-      <StateProvider initialState={{ tasks: [] }}>
-        <MainComponent/>
-      </StateProvider>
-    );
-    const modals = wrapper.find('.modal')
-    expect(modals.length).toEqual(0)
-  });
 
   it("initialy don't render any tasks", () => {
     const wrapper = mount(
@@ -34,6 +17,16 @@ describe('MainComponent', () => {
     expect(tasks.length).toEqual(0)
     const infoMessage = wrapper.find('.info-message')
     expect(infoMessage.text()).toEqual('No tasks on the list. Use the buttom below to add some.')
+  });
+
+  it("initialy don't show any modal", () => {
+    const wrapper = mount(
+      <StateProvider initialState={{ tasks: [] }}>
+        <MainComponent/>
+      </StateProvider>
+    );
+    const modals = wrapper.find('.modal')
+    expect(modals.length).toEqual(0)
   });
 
   it('can open a modal for adding new task', () => {
@@ -127,7 +120,7 @@ describe('MainComponent', () => {
     expect(wrapper.find('.task').length).toEqual(0)
   });
 
-  it('can edit task', () => {
+  it('can edit task data', () => {
     const wrapper = mount(
       <StateProvider initialState={{
         tasks: [
@@ -182,8 +175,4 @@ describe('MainComponent', () => {
     const tasks = wrapper.find('.task')
     expect(tasks.at(0).find('h3').text()).toEqual('task title')
   });
-
-  // can edit task colors
-
-  // EDIT modal - fills modal with provided task data
 });

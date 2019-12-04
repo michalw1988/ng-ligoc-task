@@ -1,17 +1,10 @@
 import React from "react"
-import { shallow, mount } from "enzyme"
+import { mount } from "enzyme"
 import Task from "./Task"
 import { StateProvider } from '../../state/state'
 import { initialState } from '../../state/initialState'
 
 describe('Task', () => {
-  it('renders correctly', () => {
-    shallow(
-      <StateProvider>
-        <Task task={{}} />
-      </StateProvider>
-    )
-  })
 
   it('renders task according to its properties', () => {
     const wrapper = mount(
