@@ -37,8 +37,8 @@ function MainComponent() {
       </section>
 
       <section className="actions">
-        <button onClick={() => setAddTaskModalOpen(true)}>Add new task</button>
-        <button onClick={() => console.log(tasks)}>Export tasks</button>
+        <button id="add-task-button" onClick={() => setAddTaskModalOpen(true)}>Add new task</button>
+        <button id="export-tasks-button" onClick={() => console.log(tasks)}>Export tasks</button>
       </section>
 
       <footer>

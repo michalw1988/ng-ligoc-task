@@ -80,7 +80,7 @@ function AddTaskModal({ closeModalHandler }) {
         }
 
         <div className="button-wrapper">
-          <button onClick={handleAddTask}>Add task</button>
+          <button id="add-button" onClick={handleAddTask}>Add task</button>
         </div>
       </div>
     </div>

@@ -17,11 +17,11 @@ function Task({ task, editHandler }) {
           {task.title}
         </h3>
         <div>
-          <span><FontAwesomeIcon icon={faEdit} onClick={editHandler} /></span>
-          <span><FontAwesomeIcon icon={faTrash} onClick={() => dispatch({type: 'removeTask', idToRemove: task.id})} /></span>
+          <span><FontAwesomeIcon className="edit-icon" icon={faEdit} onClick={editHandler} /></span>
+          <span><FontAwesomeIcon className="remove-icon" icon={faTrash} onClick={() => dispatch({type: 'removeTask', idToRemove: task.id})} /></span>
         </div>
       </div>
-      { isDescriptionOpen && <div>{task.description}</div> }
+      { isDescriptionOpen && <div className="task-description">{task.description}</div> }
     </div>
   )
 }

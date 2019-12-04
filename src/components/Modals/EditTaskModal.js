@@ -82,7 +82,7 @@ function EditTaskModal({ closeModalHandler, task }) {
         }
 
         <div className="button-wrapper">
-          <button onClick={handleEditTask}>Confirm changes</button>
+          <button id="confirm-button" onClick={handleEditTask}>Confirm changes</button>
         </div>
       </div>
     </div>
