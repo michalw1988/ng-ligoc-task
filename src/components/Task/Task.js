@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './Task.scss';
-import { useStateValue } from '../../state/state';
+import React, { useState } from 'react'
+import './Task.scss'
+import { useStateValue } from '../../state/state'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrash, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
@@ -23,7 +23,7 @@ function Task({ task, editHandler }) {
       </div>
       { isDescriptionOpen && <div>{task.description}</div> }
     </div>
-  );
+  )
 }
 
-export default Task;
+export default Task

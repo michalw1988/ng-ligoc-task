@@ -1,4 +1,5 @@
 export const reducer = (state, action) => {
+
   switch (action.type) {
     case 'addTask':
       return {
@@ -10,17 +11,20 @@ export const reducer = (state, action) => {
             id: state.tasks.length ? Math.max(...state.tasks.map(item => item.id)) + 1 : 0
           }
         ]
-      };
+      }
+      
     case 'reorderTasks':
       return {
         ...state,
         tasks: action.reorderedTasks,
       }
+
     case 'removeTask':
       return {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.idToRemove)
       }
+
     case 'editTask':
       return {
         ...state,
@@ -36,7 +40,8 @@ export const reducer = (state, action) => {
             : task
         })
       }
+
     default:
-      return state;
+      return state
   }
-};
+}

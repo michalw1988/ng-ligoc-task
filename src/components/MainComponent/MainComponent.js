@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import './MainComponent.scss';
 import { useStateValue } from '../../state/state';
-import AddTaskModal from '../AddTaskModal/AddTaskModal';
+import AddTaskModal from '../Modals/AddTaskModal';
 import RLDD from 'react-list-drag-and-drop/lib/RLDD';
 import Task from '../Task/Task';
-import EditTaskModal from '../EditTaskModal/EditTaskModal';
+import EditTaskModal from '../Modals/EditTaskModal';
 
 function MainComponent() {
   const [addTaskModalOpen, setAddTaskModalOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
   const [{ tasks }, dispatch] = useStateValue();
 
-  const handleRLDDChange = (reorderedItems) => {
+  const handleRLDDChange = reorderedItems => {
     dispatch({
       type: 'reorderTasks',
       reorderedTasks: reorderedItems,
@@ -23,6 +23,7 @@ function MainComponent() {
       <header>
         <h1>Simple Task Manager</h1>
       </header>
+
       <section className="tasks-list">
         <div className="containter">
           { !tasks.length && <div className="info-message">No tasks on the list. Use the buttom below to add some.</div> }
@@ -39,6 +40,7 @@ function MainComponent() {
         <button onClick={() => setAddTaskModalOpen(true)}>Add new task</button>
         <button onClick={() => console.log(tasks)}>Export tasks</button>
       </section>
+
       <footer>
         <p>Created by Michał Wiśniewski (MW Projects), December 2019</p>
       </footer>

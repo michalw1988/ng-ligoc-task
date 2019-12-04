@@ -1,46 +1,44 @@
-import React, { useState } from 'react';
-import './EditTaskModal.scss';
-import { useStateValue } from '../../state/state';
+import React, { useState } from 'react'
+import './Modals.scss'
+import { useStateValue } from '../../state/state'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { CompactPicker } from 'react-color'
 
-function EditTaskModal({ closeModalHandler, task }) {
-  const [title, setTitle] = useState(task.title || '')
+function AddTaskModal({ closeModalHandler }) {
+  const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState(false)
-  const [description, setDescription] = useState(task.description || '')
-  const [backgroundColor, setBackgroundColor] = useState(task.backgroundColor || '#ccc')
-  const [textColor, setTextColor] = useState(task.textColor || '#000')
+  const [description, setDescription] = useState('')
+  const [backgroundColor, setBackgroundColor] = useState('#ccc')
+  const [textColor, setTextColor] = useState('#000')
   const [displayBackgroundColorPicker, setDisplayBackgroundColorPicker] = useState(false)
   const [displayTextColorPicker, setDisplayTextColorPicker] = useState(false)
   const [, dispatch] = useStateValue()
 
-  const handleEditTask = () => {
+  const handleAddTask = () => {
     const newTitleError = !title.length
     if (!newTitleError) {
-      const editedTask = {
-        ...task,
-        title,
-        description,
-        backgroundColor,
-        textColor
-      }
       dispatch({
-        type: 'editTask',
-        editedTask,
-      });
+        type: 'addTask',
+        newTask: {
+          title,
+          description,
+          backgroundColor,
+          textColor
+        }
+      })
       closeModalHandler()
     }
     setTitleError(newTitleError)
   }
 
   return (
-    <div className="edit-task-modal">
+    <div className="modal">
       <div className="modal-box">
 
         <div className="close-icon" onClick={closeModalHandler}><FontAwesomeIcon icon={faTimes} /></div>
 
-        <h2>Edit task</h2>
+        <h2>Add new task</h2>
 
         <div className="input-line">
           <label>Title</label>
@@ -49,7 +47,7 @@ function EditTaskModal({ closeModalHandler, task }) {
         </div>
         
         <div className="input-line">
-          {/* <label>Description</label> */}
+          <label>Description</label>
           <textarea value={description} onChange={e => setDescription(e.target.value)} />
         </div>
 
@@ -82,11 +80,11 @@ function EditTaskModal({ closeModalHandler, task }) {
         }
 
         <div className="button-wrapper">
-          <button onClick={handleEditTask}>Confirm changes</button>
+          <button onClick={handleAddTask}>Add task</button>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default EditTaskModal;
+export default AddTaskModal
