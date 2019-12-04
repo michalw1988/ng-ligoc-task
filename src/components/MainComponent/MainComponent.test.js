@@ -149,11 +149,41 @@ describe('MainComponent', () => {
     wrapper.find('input').simulate('change', {
       target: { value: 'edited task title' }
     })
+    wrapper.find('textarea').simulate('change', {
+      target: { value: 'edited task description' }
+    })
     wrapper.find('button#confirm-button').simulate('click')
     expect(tasks.at(0).find('h3').text()).toEqual('edited task title')
+    tasks.at(0).find('.chevron').at(0).simulate('click')
+    expect(wrapper.find('.task-description').text()).toEqual('edited task description')
   });
 
-  // can edit task (description, colors)
+  it('can cancel task edition without changing its data', () => {
+    const wrapper = mount(
+      <StateProvider initialState={{
+        tasks: [
+          {
+            id: 1,
+            title: 'task title',
+            description: 'task description',
+            textColor: '#000',
+            backgroundColor: '#fff',
+          }
+        ]
+      }} reducer={reducer}>
+        <MainComponent/>
+      </StateProvider>
+    );
+    wrapper.find('.edit-icon').at(0).simulate('click')
+    wrapper.find('input').simulate('change', {
+      target: { value: 'edited task title' }
+    })
+    wrapper.find('.close-icon').simulate('click')
+    const tasks = wrapper.find('.task')
+    expect(tasks.at(0).find('h3').text()).toEqual('task title')
+  });
 
-  // cant remove task title
+  // can edit task colors
+
+  // EDIT modal - fills modal with provided task data
 });
